@@ -1,0 +1,15 @@
+cff-version: 1.2.0
+title: Research Project Workflow
+message: "If you use this workflow in your research process, please cite this repository."
+type: software
+version: 1.0.0
+date-released: 2026-09-15
+license: MIT
+repository-code: "https://github.com/KuihanLi/research-project-workflow"
+abstract: "A lightweight, completion-first ChatGPT Skill for research planning, controlled experiments, evidence interpretation, manuscript development, and long-project continuity."
+keywords:
+  - research workflow
+  - scientific experiments
+  - reproducibility
+  - ChatGPT Skill
+  - paper writing

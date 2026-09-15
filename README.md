@@ -1,5 +1,7 @@
 # Research Project Workflow
 
+> English | [简体中文](README.zh-CN.md)
+
 A lightweight, completion-first workflow Skill for long-running research projects. It helps ChatGPT move from research idea and method design through implementation, controlled experiments, evidence interpretation, manuscript writing, handoff, and submission without turning the workflow itself into a bottleneck.
 
 ## Why this exists

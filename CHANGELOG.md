@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.1.0 - 2026-09-24
+
+### Added
+- Pre-experiment novelty scan before freezing the main experiment contract for new or materially changed claims.
+- Baseline viability gate that distinguishes strict-protocol baselines from method-native literature comparisons and validates a representative runnable baseline path when practical.
+- Evidence-based venue shortlisting before manuscript title/abstract/contribution and section framing.
+- Repository TODO for future community-maintained journal/discipline guidance discovery and contribution.
+
+### Changed
+- Manuscript-stage literature search is now normally a delta audit rather than the first novelty discovery pass.
+- Venue positioning now considers the paper's actual evidence, current official scope, recent close publications, contribution type, and experimental burden rather than prestige alone.
+- Journal- and discipline-specific writing/figure preferences remain outside the core Skill until separately validated.
+
 ## 1.0.0 - 2026-09-15
 
 ### Added

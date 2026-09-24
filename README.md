@@ -12,12 +12,15 @@ Long research conversations often become slower over time because the assistant 
 - **Lazy procedure loading:** read only the reference needed for the current task.
 - **Completion first:** finish answerable work instead of blocking on noncritical process steps.
 - **Evidence discipline:** protect validation/test boundaries and avoid tuning on final-test evidence.
+- **Early novelty/baseline gate:** verify the claim landscape and strongest practical baselines before freezing the main experiment contract.
+- **Venue-first manuscript framing:** shortlist target venues from the actual evidence and recent publication landscape before locking the manuscript frame.
 - **Compact output:** default to a three-part response focused on conclusion, evidence/deliverable, and next action.
 
 ## What it supports
 
 - Research question and hypothesis framing
 - Method and algorithm revision
+- Pre-experiment novelty search and baseline viability validation
 - Baseline and control design
 - Experiment implementation and debugging
 - Multi-seed and ablation planning
@@ -25,6 +28,7 @@ Long research conversations often become slower over time because the assistant 
 - Failure diagnosis and result aggregation
 - Manuscript drafting and revision
 - Novelty and claim-evidence audits
+- Evidence-based venue shortlisting before manuscript framing
 - Venue and submission preparation
 - Long-project handoff and continuity
 
@@ -60,11 +64,13 @@ The workflow explicitly avoids rereading references that are already available i
 ## Core behavior
 
 1. Complete all compatible user-requested work that can be done now.
-2. Block only when proceeding would contaminate final evidence, fabricate evidence, violate safety/authorization constraints, or require a missing fact that cannot be safely inferred.
-3. Use validation evidence for tuning and reserve final-test evidence for frozen evaluation.
-4. Keep development evidence, mechanism evidence, and final evidence distinct.
-5. Load at most one primary procedure reference by default.
-6. Stop when the current deliverable is sufficient for the decision.
+2. Before the main experiment contract is frozen, run a proportional novelty scan and validate the strongest practical strict-protocol baseline path.
+3. Block only when proceeding would contaminate final evidence, fabricate evidence, violate safety/authorization constraints, or require a missing fact that cannot be safely inferred.
+4. Use validation evidence for tuning and reserve final-test evidence for frozen evaluation.
+5. Keep development evidence, mechanism evidence, and final evidence distinct.
+6. Before locking manuscript framing, shortlist target venues from official scope, recent close work, and the evidence actually available.
+7. Load at most one primary procedure reference by default.
+8. Stop when the current deliverable is sufficient for the decision.
 
 ## Example prompts
 

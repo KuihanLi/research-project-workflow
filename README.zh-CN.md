@@ -14,6 +14,7 @@ Research Project Workflow 是一个面向长期科研项目的轻量级工作流
 
 - 研究问题与假设
 - 方法目标与边界
+- 实验冻结前的查新与 baseline 可行性验证
 - baseline / control 设计
 - 数据与评价指标
 - 成功标准与停止条件
@@ -36,6 +37,8 @@ Research Project Workflow 是一个面向长期科研项目的轻量级工作流
 - 是否已经达到应该冻结模型、停止调参的阶段
 
 目标不是无限追求“再涨一点”，而是让每次修改都对应明确问题。
+
+在正式展开主实验矩阵前，新版还要求先完成与核心 claim 成比例的查新，并至少验证最关键的可比 baseline 路径，避免实验完成后才发现创新性或比较基线发生根本变化。
 
 ### 3. 代码与实验
 
@@ -123,6 +126,7 @@ Research Project Workflow 是一个面向长期科研项目的轻量级工作流
 
 还可以处理：
 
+- 在论文标题、摘要、贡献和章节框架锁定前，基于真实证据、官方 scope 与近期相关论文进行候选 venue 选优
 - venue 定位
 - 篇幅压缩
 - 投稿材料准备
@@ -176,9 +180,9 @@ Research Project Workflow 是一个面向长期科研项目的轻量级工作流
 
 | 当前任务 | 才读取 |
 | --- | --- |
-| 新研究想法、重大方法重构、实验合同 | `references/idea-to-plan.md` |
+| 新研究想法、重大方法重构、实验前查新/基线验证、实验合同 | `references/idea-to-plan.md` |
 | 实验实现、调试、运行、失败诊断、结果聚合 | `references/code-experiment-loop.md` |
-| 论文、创新性、claim、venue、投稿 | `references/paper-workflow.md` |
+| 论文、claim、框架设计前 venue 选优、投稿 | `references/paper-workflow.md` |
 | 新会话恢复、工作区交接、上下文冲突 | `references/context-management.md` |
 
 普通连续讨论不会因为再次使用该 Skill 就重新把所有文件读一遍。

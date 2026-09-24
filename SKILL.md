@@ -1,9 +1,9 @@
 ---
-name: research-project-workflow
+name: research-experiment-paper-workflow
 description: Efficient completion-first workflow for research projects from idea and method design through code, controlled experiments, evidence interpretation, manuscript writing, handoff, and submission. Use for research planning, algorithm revision, experiment code, validation/test analysis, long-project continuity, novelty/baseline audits, paper drafting/revision, venue work, and research handoff. Keep a small session-resident core, load stage references only when needed, protect test-set/evidence integrity, and avoid repeated workflow rereads or bookkeeping that slows answerable work.
 ---
 
-# Research Project Workflow
+# Research Experiment Paper Workflow
 
 Use this skill as a lightweight research control plane. Keep project-specific facts such as paths, architecture details, numerical thresholds, commands, current versions, and results in project state or the active workspace. Keep only reusable operating rules here.
 
@@ -37,6 +37,8 @@ Otherwise proceed with the strongest correct deliverable, mark assumptions or ev
 
 Keep these rules active throughout the session without rereading a reference:
 
+- For every new or materially changed research claim, run a proportional **pre-experiment novelty scan and baseline viability check before freezing the main experiment contract or launching an expensive experiment matrix**. Cheap feasibility probes may proceed earlier, but do not let a late literature/baseline audit redefine the contribution after evidence has already been frozen.
+- Treat baseline viability as empirical, not bibliographic: identify the strongest applicable public/official baselines, verify protocol compatibility, and make at least one representative baseline path runnable or explicitly document why it is not directly reproducible/comparable before the main campaign.
 - Use train/validation evidence for model selection, tuning, early stopping, and design-stage diagnosis.
 - Before first reserved final-test access, freeze the candidate method/configuration, seed semantics, checkpoint-selection rule, metrics, baseline scope, and reporting rule that affect the claim.
 - Never retune from final-test results. If final evidence disagrees with the hypothesis, revise the claim, not the frozen method on the same holdout.
@@ -81,9 +83,9 @@ Exceptions: command-only requests get the command plus essential warning; finish
 
 References are **procedures**, not always-on policy. Load them only on a trigger below. By default, read at most one primary reference for a turn; add another only when the task genuinely spans both procedures.
 
-- `references/idea-to-plan.md` — load for a vague/new research idea, material redesign, hypothesis framing, experiment-contract design, or baseline/control planning.
+- `references/idea-to-plan.md` — load for a vague/new research idea, material redesign, hypothesis framing, pre-experiment novelty/baseline validation, experiment-contract design, or baseline/control planning.
 - `references/code-experiment-loop.md` — load for implementation/debugging tied to experiments, experiment scheduling, verification, failure/retry diagnosis, aggregation, or interpretation of returned results.
-- `references/paper-workflow.md` — load for manuscript structure/revision, claim audit, novelty/baseline literature scope, venue selection, or submission preparation.
+- `references/paper-workflow.md` — load for manuscript structure/revision, claim audit, venue shortlisting/selection before outline design, literature-position delta checks, or submission preparation.
 - `references/context-management.md` — load only for new-session/workspace recovery, missing/stale project state that materially affects work, explicit handoff/export, or a major continuity conflict.
 
 Do not load `context-management.md` just because a project is long. Do not load `paper-workflow.md` merely because eventual publication is a goal. Do not load `idea-to-plan.md` when the current method and contract are already settled. Do not load `code-experiment-loop.md` for ordinary code edits unrelated to experimental validity.

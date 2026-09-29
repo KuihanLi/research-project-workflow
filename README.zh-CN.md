@@ -183,7 +183,7 @@ Research Project Workflow 是一个面向长期科研项目的轻量级工作流
 | 新研究想法、重大方法重构、实验前查新/基线验证、实验合同 | `references/idea-to-plan.md` |
 | 实验实现、调试、运行、失败诊断、结果聚合 | `references/code-experiment-loop.md` |
 | 论文、claim、框架设计前 venue 选优、投稿 | `references/paper-workflow.md` |
-| 新会话恢复、工作区交接、上下文冲突 | `references/context-management.md` |
+| 新会话恢复、状态冲突、可靠上下文压力信号 | `references/context-management.md` |\n| 显式交接、大修/阶段结束检查点、最小可恢复工作区打包 | `references/handoff-workspace.md` |
 
 普通连续讨论不会因为再次使用该 Skill 就重新把所有文件读一遍。
 

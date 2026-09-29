@@ -1,6 +1,6 @@
 ---
 name: research-experiment-paper-workflow
-description: Efficient completion-first workflow for research projects from idea and method design through code, controlled experiments, evidence interpretation, manuscript writing, handoff, and submission. Use for research planning, algorithm revision, experiment code, validation/test analysis, long-project continuity, novelty/baseline audits, paper drafting/revision, venue work, and research handoff. Keep a small session-resident core, load stage references only when needed, protect test-set/evidence integrity, and avoid repeated workflow rereads or bookkeeping that slows answerable work.
+description: Efficient completion-first workflow for research projects from idea and method design through code, controlled experiments, evidence interpretation, manuscript writing, recoverable workspace handoff, and submission. Use for research planning, algorithm revision, experiment code, validation/test analysis, long-project continuity, novelty/baseline audits, paper drafting/revision, venue work, major-revision/phase checkpoints, explicit handoff/export, and context-pressure continuity protection. Keep a small session-resident core, protect test/evidence integrity, and package only minimal recoverable state.
 ---
 
 # Research Experiment Paper Workflow
@@ -18,7 +18,7 @@ Treat this `SKILL.md` as the complete always-on contract for the current convers
 - Do not recursively invoke this skill or invoke `/caveman` as a second pass. Compression is part of this core contract.
 - Small factual/conceptual questions should be answered directly without phase routing.
 
-This session-resident behavior is distinct from cross-session project memory. Use `references/context-management.md` only when continuity across sessions/workspaces actually matters.
+This session-resident behavior is distinct from cross-session project memory. Use `references/context-management.md` only when continuity recovery actually matters. Use `references/handoff-workspace.md` only at a real handoff checkpoint: **(a)** the user explicitly requests handoff/export, **(b)** a major revision or meaningful research phase closes and the workspace has a new authoritative state, or **(c)** the runtime reliably indicates context pressure/compaction risk that threatens continuity. Do not package after routine edits or merely because a conversation is long.
 
 ## 2. Completion first; blocking is exceptional
 
@@ -32,6 +32,8 @@ Workflow may block or defer an action only when:
 - a missing fact makes the requested result materially incorrect and cannot be inferred, inspected, or safely marked as an assumption.
 
 Otherwise proceed with the strongest correct deliverable, mark assumptions or evidence limits briefly, and perform available checks in the same turn. Never spend a turn only on routing, audit, state recovery, version logging, or approval for work already authorized.
+
+**Context-pressure exception:** if the runtime exposes a reliable high-context/compaction signal, finish the current atomic operation when safe, create a recoverable handoff checkpoint, write unfinished work into `HANDOFF.md`, and warn before starting another long subtask. Block/defer further multi-step work only when continuing would materially risk losing authoritative state. If exact context pressure is not observable, do not invent a token percentage or claim that the context is nearly full; rely on major-revision/phase checkpoints instead.
 
 ## 3. Scientific evidence core
 
@@ -75,6 +77,7 @@ Compression rules:
 - Preserve technical terms, code symbols, equations, paths, CLI commands, numbers, units, negation, qualifiers, and exact error strings.
 - Do not create ambiguous abbreviations or broken grammar just to shorten text.
 - Do not append separate recap/self-check/risk/methodology sections when the content fits the three parts.
+- When a handoff checkpoint is created, place the `handoff_bundle.zip` download link (and `HANDOFF.md` link when separately surfaced) in **part 2: 关键依据 / 交付**. Do not add a fourth handoff section or repeat the handoff contents in prose.
 - Stop once the requested deliverable is correct and sufficient. Do not trigger another review pass solely because this skill is active.
 
 Exceptions: command-only requests get the command plus essential warning; finished prose/code requested inline is delivered in full; safety-sensitive actions and explicitly requested detailed reports may exceed three parts.
@@ -86,9 +89,10 @@ References are **procedures**, not always-on policy. Load them only on a trigger
 - `references/idea-to-plan.md` — load for a vague/new research idea, material redesign, hypothesis framing, pre-experiment novelty/baseline validation, experiment-contract design, or baseline/control planning.
 - `references/code-experiment-loop.md` — load for implementation/debugging tied to experiments, experiment scheduling, verification, failure/retry diagnosis, aggregation, or interpretation of returned results.
 - `references/paper-workflow.md` — load for manuscript structure/revision, claim audit, venue shortlisting/selection before outline design, literature-position delta checks, or submission preparation.
-- `references/context-management.md` — load only for new-session/workspace recovery, missing/stale project state that materially affects work, explicit handoff/export, or a major continuity conflict.
+- `references/context-management.md` — load only for new-session/workspace recovery, missing/stale project state that materially affects work, or reliable context-pressure/compaction signals.
+- `references/handoff-workspace.md` — load for an explicit handoff/export request, after a **major revision or meaningful phase closes**, or when reliable context pressure makes a continuity checkpoint necessary. It defines the minimal-recoverable-workspace bundle, `HANDOFF.md`, and optional evidence-chain companion.
 
-Do not load `context-management.md` just because a project is long. Do not load `paper-workflow.md` merely because eventual publication is a goal. Do not load `idea-to-plan.md` when the current method and contract are already settled. Do not load `code-experiment-loop.md` for ordinary code edits unrelated to experimental validity.
+Do not load `context-management.md` just because a project is long. Do not create a handoff after small edits, ordinary analysis turns, or every experiment return. Treat a **major revision** as a new authoritative checkpoint that materially changes method/code, experiment contract, manuscript/workspace version, or accepted evidence state. Do not claim context pressure unless the runtime provides a reliable signal or prior context has demonstrably been compacted/lost. Do not load `paper-workflow.md` merely because eventual publication is a goal. Do not load `idea-to-plan.md` when the current method and contract are already settled. Do not load `code-experiment-loop.md` for ordinary code edits unrelated to experimental validity.
 
 If a reference was already loaded and still applies, reuse it. If the user changes scope, load only the newly relevant reference rather than restarting the whole workflow.
 

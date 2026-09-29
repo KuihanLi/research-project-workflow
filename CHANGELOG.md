@@ -1,5 +1,22 @@
 # Changelog
 
+## 1.2.0 - 2026-09-29
+
+### Added
+- Minimal recoverable handoff workspace packaging with root-level `HANDOFF.md` and SHA-256 manifest verification.
+- Automatic handoff checkpoints after major revisions or meaningful phase closures that create a new authoritative workspace state.
+- Context-pressure continuity handling: checkpoint early only when the runtime exposes a reliable signal or prior context has demonstrably been compacted/lost.
+- Optional `EXPERIMENT_EVIDENCE_CHAIN.md` companion, created only on explicit request.
+- Deterministic `scripts/package_handoff.py` with ZIP CRC verification, path-boundary checks, duplicate detection, and obvious-secret filename rejection.
+
+### Changed
+- Handoff links now appear in the normal second section (**关键依据 / 交付**) of the three-part response instead of creating an extra user-facing section.
+- Context pressure may justify pausing further multi-step work only after a recoverable checkpoint is written; the workflow must not invent remaining-token percentages when the runtime does not expose them.
+- Context recovery and handoff generation are separated into `context-management.md` and `handoff-workspace.md`.
+
+### Stopped
+- Journal-specific writing-style guide extraction and discipline-level figure-preference guide integration are discontinued after testing showed limited practical benefit. They remain outside the core Skill unless explicitly reopened in the future.
+
 ## 1.1.0 - 2026-09-24
 
 ### Added

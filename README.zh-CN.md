@@ -133,6 +133,8 @@ Research Project Workflow 是一个面向长期科研项目的轻量级工作流
 - 复现材料整理
 - 新会话恢复项目状态
 - 工作区交接
+- 大修/阶段收尾后的最小可恢复工作区自动检查点
+- 在运行环境能够可靠确认上下文压力时提前打包连续性检查点
 - 版本、实验记录和当前结论恢复
 
 适合持续数周甚至数月的研究项目，而不是只解决单个问题。
@@ -183,7 +185,8 @@ Research Project Workflow 是一个面向长期科研项目的轻量级工作流
 | 新研究想法、重大方法重构、实验前查新/基线验证、实验合同 | `references/idea-to-plan.md` |
 | 实验实现、调试、运行、失败诊断、结果聚合 | `references/code-experiment-loop.md` |
 | 论文、claim、框架设计前 venue 选优、投稿 | `references/paper-workflow.md` |
-| 新会话恢复、工作区交接、上下文冲突 | `references/context-management.md` |
+| 新会话恢复、状态冲突、可靠上下文压力信号 | `references/context-management.md` |
+| 显式交接、大修/阶段结束检查点、最小可恢复工作区打包 | `references/handoff-workspace.md` |
 
 普通连续讨论不会因为再次使用该 Skill 就重新把所有文件读一遍。
 
@@ -195,7 +198,7 @@ Research Project Workflow 是一个面向长期科研项目的轻量级工作流
 2. **关键依据 / 交付**
 3. **下一步**
 
-内部分析可以复杂，但不会把大量流程说明、自检、路由过程和重复总结倾倒给用户。
+内部分析可以复杂，但不会把大量流程说明、自检、路由过程和重复总结倾倒给用户。若本轮形成 handoff 检查点，下载链接直接放在第 2 段“关键依据 / 交付”，不另加第四段。
 
 ---
 
@@ -257,11 +260,14 @@ research-project-workflow/
 │   └── openai.yaml
 ├── assets/
 │   └── icon.svg
+├── scripts/
+│   └── package_handoff.py
 └── references/
     ├── idea-to-plan.md
     ├── code-experiment-loop.md
     ├── paper-workflow.md
-    └── context-management.md
+    ├── context-management.md
+    └── handoff-workspace.md
 ```
 
 ## 安装 / 迁移

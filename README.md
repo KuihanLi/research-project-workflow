@@ -57,7 +57,7 @@ research-project-workflow/
 | New/vague research idea, major redesign, controls | `references/idea-to-plan.md` |
 | Experiment code, runs, failures, aggregation, returned results | `references/code-experiment-loop.md` |
 | Manuscript, claims, novelty, venue, submission | `references/paper-workflow.md` |
-| New-session recovery, handoff, continuity conflicts | `references/context-management.md` |
+| New-session recovery or confirmed context-pressure continuity | `references/context-management.md` |\n| Explicit handoff, major-revision/phase checkpoint, resumable workspace export | `references/handoff-workspace.md` |
 
 The workflow explicitly avoids rereading references that are already available in the same session unless context was lost or the file changed.
 

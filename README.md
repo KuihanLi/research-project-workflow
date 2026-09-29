@@ -14,6 +14,7 @@ Long research conversations often become slower over time because the assistant 
 - **Evidence discipline:** protect validation/test boundaries and avoid tuning on final-test evidence.
 - **Early novelty/baseline gate:** verify the claim landscape and strongest practical baselines before freezing the main experiment contract.
 - **Venue-first manuscript framing:** shortlist target venues from the actual evidence and recent publication landscape before locking the manuscript frame.
+- **Recoverable checkpoints:** package a minimal resumable workspace after major revisions/phase closures, explicit handoff requests, or reliably signaled context pressure.
 - **Compact output:** default to a three-part response focused on conclusion, evidence/deliverable, and next action.
 
 ## What it supports
@@ -31,6 +32,7 @@ Long research conversations often become slower over time because the assistant 
 - Evidence-based venue shortlisting before manuscript framing
 - Venue and submission preparation
 - Long-project handoff and continuity
+- Minimal recoverable workspace packaging with `HANDOFF.md` and SHA-256 manifest verification
 
 ## Repository structure
 
@@ -41,11 +43,14 @@ research-project-workflow/
 │   └── openai.yaml
 ├── assets/
 │   └── icon.svg
+├── scripts/
+│   └── package_handoff.py
 └── references/
     ├── idea-to-plan.md
     ├── code-experiment-loop.md
     ├── paper-workflow.md
-    └── context-management.md
+    ├── context-management.md
+    └── handoff-workspace.md
 ```
 
 ## Loading model
@@ -57,7 +62,8 @@ research-project-workflow/
 | New/vague research idea, major redesign, controls | `references/idea-to-plan.md` |
 | Experiment code, runs, failures, aggregation, returned results | `references/code-experiment-loop.md` |
 | Manuscript, claims, novelty, venue, submission | `references/paper-workflow.md` |
-| New-session recovery or confirmed context-pressure continuity | `references/context-management.md` |\n| Explicit handoff, major-revision/phase checkpoint, resumable workspace export | `references/handoff-workspace.md` |
+| New-session recovery or confirmed context-pressure continuity | `references/context-management.md` |
+| Explicit handoff, major-revision/phase checkpoint, resumable workspace export | `references/handoff-workspace.md` |
 
 The workflow explicitly avoids rereading references that are already available in the same session unless context was lost or the file changed.
 
@@ -69,8 +75,10 @@ The workflow explicitly avoids rereading references that are already available i
 4. Use validation evidence for tuning and reserve final-test evidence for frozen evaluation.
 5. Keep development evidence, mechanism evidence, and final evidence distinct.
 6. Before locking manuscript framing, shortlist target venues from official scope, recent close work, and the evidence actually available.
-7. Load at most one primary procedure reference by default.
-8. Stop when the current deliverable is sufficient for the decision.
+7. After a major revision/meaningful phase close, create a minimal recoverable checkpoint when the workspace has a new authoritative state; also checkpoint on explicit request or reliable context-pressure signals.
+8. Put handoff download links in the normal second response section rather than adding a fourth section.
+9. Load at most one primary procedure reference by default.
+10. Stop when the current deliverable is sufficient for the decision.
 
 ## Example prompts
 
@@ -102,7 +110,7 @@ Do not flatten `references/`, `agents/`, or `assets/`; `SKILL.md` references the
 - No per-turn phase scan
 - No reply-count bookkeeping
 - No recursive Skill invocation
-- No workflow-only blocking turns
+- No workflow-only blocking turns except evidence/safety boundaries and confirmed continuity-risk checkpoints
 - Lazy reference loading
 - Strong experimental evidence boundaries
 - Compact user-facing output

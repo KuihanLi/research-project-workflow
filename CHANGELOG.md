@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+
+### Documentation
+- Documented the lightweight development and maintenance contract in both README files: audit-first, minimal patches, lazy loading, targeted regression tests, truthful install/remote-state reporting, focused PRs, recoverable handoff checkpoints, and stopping low-value feature branches.
+
+
 ## 1.2.0 - 2026-09-29
 
 ### Added

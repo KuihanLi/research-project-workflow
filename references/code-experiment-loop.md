@@ -1,83 +1,51 @@
-# Code -> Experiment Loop
+# Code -> Experiment Loop (shared across IDEA branches)
 
-Load this reference for experiment-facing implementation, experiment planning, returned-result interpretation, retry/failure diagnosis, or aggregation. Reuse it once loaded; do not reload per run or per turn.
+Load for experiment-facing implementation, planned/returned experiments, retries, failure diagnosis, aggregation or controlled branch comparison. Reuse after loading.
 
-## 1. Implement by risk
+## 1. Implement by touched risk
 
-Check the layer touched by the change; do not audit unrelated layers every time.
+**Data/semantics:** verify shape/order/units, mask/missingness, leakage-free splits and normalization, source/subject/session identities, deterministic views, deployment-available inputs.
 
-### Data/semantics
-- shape, ordering, units, mask/missingness semantics;
-- leakage-free split and normalization;
-- deterministic subset/view construction when required;
-- inference matches the declared deployment contract.
+**Model/interface:** preserve current APIs unless necessary; put repeated choices in config; keep minimal controlled changes; isolate conflicting branch-specific modifications in reproducible commits/configs while keeping a known shared baseline.
 
-### Model/interface
-- preserve existing APIs unless a change is necessary;
-- expose repeated experimental choices as configuration rather than hard-coded branches;
-- keep the mechanism minimal until evidence justifies complexity.
+**Infrastructure:** as applicable, record seeds, config snapshot, checkpoint identity, run completeness, structured result, bounded retries and failure classification.
 
-### Experiment infrastructure
-For nontrivial sweeps, ensure the needed subset of: seed control, config snapshot, checkpoint resume, best/last distinction, structured JSON/CSV results, run completeness, failure classification, and scheduler/retry support.
-
-### Reporting
-Aggregate the metrics required by the claim: valid run count, mean/std, paired differences or confidence intervals where meaningful, worst case, resource cost when claimed, and exact provenance.
+**Reporting:** aggregate valid runs, mean/dispersion, paired effects or uncertainty on independent units, relevant worst subgroup, resource costs and source provenance. The same observation referenced by two branches is *not* two replications.
 
 ## 2. Verification ladder
 
-Use the cheapest check that addresses the risk introduced by the change:
+Use the cheapest appropriate check: (1) unit/shape; (2) synthetic/dry-run; (3) tiny real development smoke; (4) one full development run; (5) small multi-seed batch; (6) full sweep or **frozen independent final**. Skip irrelevant levels covered by sound existing evidence; final holdout is never a debugging surface.
 
-1. unit/shape check;
-2. synthetic/dry run;
-3. tiny real-data development smoke run;
-4. one full development run;
-5. small multi-seed batch;
-6. full sweep or frozen final confirmation.
+## 3. Evidence class and experiment identity
 
-This is risk guidance, not a turn-by-turn gate. Skip irrelevant levels when prior evidence already covers them. Never use the reserved final test as a smoke/debug surface.
+- **Development / tuning:** use training/validation to choose branch, method, metric-compatible settings or a conditional domain.
+- **Mechanism / ablation:** discriminate explicit explanations, controlled alternatives and failure modes; don't silently tune a frozen candidate after observing final evidence.
+- **Independent final confirmation:** execute the pre-specified locked claim-version contract, not a winner-selection competition over many unregistered branches.
 
-## 3. Experiment classes
+Use stable identity containing relevant `idea_id`, `claim_version`, run purpose, code/config/data/split/seed, information and compute budget, expected output, status and evidence class. For shared baselines, register the run **once** with multiple consumers. If a code/data/metric semantic repair changes the condition, create a new run rather than overwriting the old negative.
 
-- **Development/tuning**: choose settings from train/validation evidence only.
-- **Mechanism/ablation**: test explanatory components; after freeze, do not use these results to silently retune the frozen candidate.
-- **Final confirmation**: evaluate a prespecified frozen candidate; do not redesign from the result on the same holdout.
+Track test exposure across the project. Selecting a new feature, subgroup/domain or method after viewing final holdout results marks subsequent evidence on that holdout exploratory. Changing a branch ID does not restore holdout independence.
 
-Prefer planned compact searches over serial ad-hoc edits. Declare the primary selection statistic before interpreting a tuning batch.
+## 4. Design decisive, branch-comparable batches
 
-## 4. Dispatch external execution
+Plan orthogonal low-cost contrasts together; keep inputs, source units, data splits, backbone/capacity, training budget, checkpoint and metric definitions matched when testing a targeted mechanism. Use negative controls (e.g. matched-dimensional noise or label shuffles) only when valid.
 
-When the user must run the experiment, provide only information needed to execute and return evidence:
+Measure conditional effects by task/source/feature and realistic independent unit, not a post-hoc best score. Anomaly fingerprints should have competing predictions and, when feasible, layered evidence: pairing -> negative controls -> ablation -> controlled intervention. Complexity that loses to a strong simple baseline must be acknowledged.
 
-- task purpose and experiment class;
-- code/config/data/seed identity that matters;
-- exact command(s) for the real environment;
-- required run count and bounded retry/stop conditions when relevant;
-- output location and one preferred return bundle;
-- decision the evidence will resolve.
+When several branches compete for one research claim, use **development evidence** to decide which merits a locked independent confirmation; protect its budget and plan for multiple-testing/selection where unavoidable. A+B combination requires controls A, B, A+B and simple baseline and a distinctive combined prediction; don't assume merging improves performance.
 
-Do not invent executable script names. Do not imply background monitoring. If a prerequisite can be checked with available tools now, check it instead of adding a user round trip.
+## 5. Dispatch external execution
 
-## 5. Receive and interpret results
+For server/GPU/hardware work the user must run, first finish local code/config/scripts. Then provide purpose and evidence class, exact runnable command, identity/splits/seeds, bounded retries, expected result path, one preferred return bundle and the decision it resolves. For detached/background launch, provide status query and result-collection commands in the **same answer**, tied to the new run ID/path if known, without relaunching an existing equivalent job. Never invent executable script names or imply unattended access.
 
-First classify the return:
+## 6. Receive and interpret
 
-- operational failure;
-- valid result below criterion;
-- valid result meeting criterion;
-- incomplete or validity unresolved.
+Classify: operational failure; valid negative; valid positive; incomplete/validity unknown. Treat a method-caused OOM or instability as possible reliability evidence, not always ignorable infrastructure failure. Never repeat a valid negative merely to obtain a passing result.
 
-Do not retry valid negative results until they pass. A method-caused OOM/instability may itself be reliability evidence.
+For surprises, check the relevant items in order: semantics/leakage/grouping, source/label confounding, unpaired or incomplete runs, checkpoint/metric mismatch, stronger simple baseline, then mechanism hypotheses. Preserve all counterexamples and actual uncertainty.
 
-For surprising results, check only relevant causes in this order: protocol/semantics mismatch, leakage/normalization/order, incomplete or unpaired runs, checkpoint/metric mismatch, strong simple-baseline explanation, then model redesign.
+For each branch choose **advance / narrow / pivot / merge / pause / reject**; record the reason and claim-version transition only for material changes. A valid negative remains in the record. Do not infer universal or causal benefit from a post-hoc subset or observational correlation.
 
-Use the strongest valid conclusion supported by current evidence and state its scope. Never present an incomplete matrix as complete final evidence.
+## 7. Continuity
 
-## 6. Retry and identity
-
-For confirmatory comparisons, preserve pairing keys, intended repeat counts, acceptance criteria, and bounded operational retry rules. A repair that changes method/data/metric semantics creates a new condition rather than replacing the old result.
-
-Use stable run/config/data identity or fingerprints when version labels are insufficient. Temporary paths, ports, or process IDs are not scientific identity.
-
-## 7. Version continuity
-
-For meaningful code/experiment iterations, retain the minimum useful record: version, changed behavior/reason, relevant config/CLI, seed/data semantics, tests performed, result/decision, and compatibility note if needed. Update project state in the same pass when practical, but never withhold a clear code fix merely because bookkeeping is stale.
+For substantive iterations preserve the minimum useful version note: changed behavior, motivation, code/config/data/seed, affected branch claims, verified checks, result/provenance, next decision, and compatibility issues. Project bookkeeping is not a prerequisite for fixing code or delivering the requested result.

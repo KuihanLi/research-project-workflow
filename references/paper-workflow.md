@@ -1,72 +1,39 @@
 # Paper and Submission Workflow
 
-Load this reference for manuscript drafting/revision, claim audit, venue selection, literature-position delta checks, or submission work. Reuse it after loading; do not rerun searches every turn unless evidence, claim scope, target venue, or the publication landscape materially changed.
+Load for manuscript structure/drafting/revision, claim audit, venue selection, recent literature delta, or submission work. Do not rerun audits every turn unless scope, evidence or publishing landscape changed.
 
-## 1. Select the venue family before designing the manuscript frame
+## 1. Choose venue family before locking a manuscript frame
 
-Unless the user explicitly requests a venue-neutral draft, do venue positioning **before** locking the title/abstract/contribution framing or section architecture. Do not choose by impact factor alone.
+Unless venue-neutral drafting is explicitly requested, first summarize the real surviving problem, **selected IDEA/claim version and its lineage**, algorithm/system/measurement emphasis, independent evidence level, resource/coverage/robustness limits, and evidence gaps. Search current official scope/instructions and recent related work; shortlist roughly 2–4 plausible venues by contribution-type fit, experimental burden, related published work, official constraints and practical submission conditions. Choose primary and fallback; keep scientific facts invariant across narratives. If no candidate fits, narrow the claim or collect evidence rather than forcing a publication frame.
 
-First summarize the paper as it actually exists:
+## 2. Literature at manuscript stage is a delta audit
 
-- central problem and surviving contribution;
-- evidence type and strength;
-- algorithm/system/measurement/application emphasis;
-- scale, datasets/testbeds, robustness/generalization axes, and reproducibility assets;
-- major evidence gaps that cannot be hidden by writing.
+A new or materially changed branch claim should already have passed a proportional pre-experiment novelty and practical strong-baseline check. Update for publication changes, closest-prior overlap, changed mechanism/domain, and claim drift; never invent “first” novelty after the fact. For surviving branches distinguish an integrated contribution from a bundle of unrelated modules.
 
-Then search current official scope/instructions and recent related publications and shortlist roughly 2--4 plausible venues. Compare them on:
+## 3. Protocol-honest comparisons
 
-- scope and contribution-type fit;
-- novelty/evidence burden;
-- systems vs algorithm vs measurement emphasis;
-- expected experimental breadth and baseline strength;
-- whether the journal has recently published close work;
-- practical constraints such as manuscript type/page policy and public data/code expectations when relevant.
+**Strict-protocol** baselines match inputs, split, supervision, resource and evaluation semantics; **method-native literature** comparisons can be relevant but are not numerically equivalent. Prefer official code with traceable adaptations. Retain stronger simple baselines and scope-limiting negative results. If baseline viability was not validated before the campaign, mark the debt rather than hiding it.
 
-Choose one primary target and one or more fallbacks. Record how the **narrative emphasis** would change across venues while keeping scientific facts fixed. If no candidate fits the evidence, revise the paper claim or collect missing evidence rather than forcing a venue.
+For merged IDEA branches, distinguish effects of each component, combined A+B and a strong simpler alternative using controlled contrasts. Never treat a post-hoc best slice per branch as a preplanned universal result.
 
-## 2. Treat manuscript-stage literature review as a delta audit, not first discovery
+## 4. Claim-to-evidence closure across branch revisions
 
-A new/materially changed research claim should already have passed the pre-experiment novelty/baseline gate in `idea-to-plan.md`. At drafting time, search again only to:
+Map each material final claim to: `idea_id`, `claim_version`, differentiating technical action, relevant prior-art delta, provenance/run IDs, data split and evidence class, prespecified metrics, target deployment domain/coverage, worst important subgroup risks, resource cost and known contradictions.
 
-- capture important work published since the earlier audit;
-- check that the contribution wording has not drifted beyond what survived the original scan;
-- update the closest-prior comparison for the selected venue;
-- verify that no newly found work invalidates a central claim.
+Classify:
 
-For each decisive paper capture: what is already known, what is similar but not identical, what evidence distinguishes the present work, and which wording must be narrowed. If a late discovery does collapse a claim, change the claim transparently; do not invent post-hoc novelty.
+- **supported**: directly by appropriate independent frozen/final evidence for that exact claim version and target domain;
+- **qualified**: validation, diagnostic, observational or selected post-hoc exploration only;
+- **unsupported/contradicted**: don't claim.
 
-## 3. Keep baseline comparisons protocol-honest
+Final-test driven pivots produce new exploratory claim versions; the old final observations cannot become independent confirmation for the new idea. Claims of causal mechanism require appropriately distinguishing evidence; statistical correlation does not suffice. Conditional average gain does not mean every subject or unseen condition improves.
 
-Separate:
+## 5. Write from the actual surviving contribution
 
-- **strict-protocol baselines**: compatible with the same input/split/evaluation semantics and suitable for numerical main tables;
-- **method-native literature comparisons**: require incompatible inputs, preprocessing, supervision, resources, or datasets and should be discussed rather than misrepresented as equivalent reproductions.
+Use a venue-appropriate structure; for empirical work Introduction, Related Work, Method, Experiments, Discussion/Limitations and Conclusion are a neutral starting point. Trace numbers and tables to run/report IDs where practical; align abstract, conclusions, figures and terminology. Existing data gaps must be labeled, never filled by invented measurements or citations. Figures should resolve a scientific question (mechanism, stability, robustness, conditional coverage/risk, ablation or cost), not decorate the text.
 
-Prefer official implementations when practical and record material adaptations. A stronger baseline stays visible and should narrow or sharpen the contribution. If the strongest baseline was not validated before the main experiment campaign, flag that as research debt and resolve it before final comparative claims whenever feasible.
+Describe branch pivots honestly when their selection history changes the strength of evidence. A narrower but realistic conditional-domain contribution can be useful, but its coverage and risks must be visible. Preserve negative results that materially qualify the paper.
 
-## 4. Claim-to-evidence closure
+## 6. Submission only when requested
 
-Before final claims or new expensive confirmation, map each material claim to existing evidence, missing evidence, the cheapest valid experiment, and any impact on reserved final-test validity.
-
-Maintain three statuses:
-
-- **supported**: directly supported by appropriate frozen/final evidence;
-- **qualified**: supported only on validation, limited datasets/axes, or descriptive analysis;
-- **unsupported/contradicted**: do not claim.
-
-If final test was already accessed, do not redesign the method from that holdout and rerun as if it were still untouched.
-
-## 5. Draft from available evidence and the selected venue emphasis
-
-Deliver writable text when requested; missing results do not justify invented numbers or citations. Mark pending evidence and constrain wording instead.
-
-For empirical/algorithmic work, a useful neutral order is: Introduction, Related Work, Method, Experiments, Discussion/Limitations, Conclusion. Adapt section architecture to the selected venue and paper type rather than forcing the template.
-
-Trace quantitative claims/tables to run or report IDs when practical. Keep terminology, equations/interfaces, figure/table references, abstract, contributions, and conclusion consistent with the current evidence state.
-
-Figures/tables should answer a scientific question rather than decorate the paper: mechanism, consistency, trade-off, ablation, robustness, generalization, uncertainty, or resource cost as relevant. Journal- or discipline-specific figure/style preferences are not part of this core until separately validated.
-
-## 6. Submission work only when requested
-
-Prepare the needed subset of manuscript/source, figures, title page, highlights, cover letter, data/code availability, funding/COI/CRediT, AI-use declaration, checklist, and source archive. Verify current official author instructions when submission requirements matter.
+Prepare the needed subset of source, figures, title page, highlights, cover letter, data/code availability, funding/COI/CRediT, AI-use declaration, checklists and archive. Check current official instructions when submission details matter. Journal-specific prose/figure-style guide extraction remains outside this core unless separately validated and reopened.

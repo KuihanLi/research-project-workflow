@@ -1,101 +1,64 @@
 ---
 name: research-experiment-paper-workflow
-description: Efficient completion-first workflow for research projects from idea and method design through code, controlled experiments, evidence interpretation, manuscript writing, recoverable workspace handoff, and submission. Use for research planning, algorithm revision, experiment code, validation/test analysis, long-project continuity, novelty/baseline audits, paper drafting/revision, venue work, major-revision/phase checkpoints, explicit handoff/export, and context-pressure continuity protection. Keep a small session-resident core, protect test/evidence integrity, and package only minimal recoverable state.
+description: Completion-first, evidence-protected research workflow supporting parallel IDEA branches, evolving or reverse-mined innovations, competitive mechanism hypotheses, conditional deployment claims, code/experiment loops, paper drafting, and recoverable handoffs. Use when planning, testing, pivoting, comparing, merging or stopping research ideas, interpreting anomalies and negative results, designing controlled experiments, validating novelty/baselines, or maintaining long-running projects.
 ---
 
 # Research Experiment Paper Workflow
 
-Use this skill as a lightweight research control plane. Keep project-specific facts such as paths, architecture details, numerical thresholds, commands, current versions, and results in project state or the active workspace. Keep only reusable operating rules here.
+This skill is a **lightweight research control plane**, not a mandatory linear pipeline. Research may proceed forward from an IDEA, backward from results, and concurrently across several hypotheses. Project-specific paths, measurements, thresholds, run IDs, and current branch statuses live in the project workspace, **not** in this skill.
 
-## 1. Session-resident core: load once, then reuse
+## 1. Load once; completion first
 
-Treat this `SKILL.md` as the complete always-on contract for the current conversation/Work session.
+- Treat this file as the session-resident core. Do not reread it or an already available reference on every turn; load only a procedure relevant to the active task.
+- Finish compatible requested work in this turn. Do not stall on phase routing, updating registries, optional literature searches, or producing a handoff.
+- Block only to protect reserved-test evidence, prevent fabricated evidence, respect safety/authorization/destructive-action boundaries, or resolve a genuinely indispensable missing fact.
+- Answer simple questions directly. Do not recursively invoke this skill or external compression workflows.
+- When a reliably signaled compaction/context issue threatens continuity, finish the atomic operation and checkpoint per `references/context-management.md`; never invent a context percentage.
 
-- On first activation, adopt the rules below for the rest of the session.
-- On later turns, if this skill is already present in conversation context, do **not** reread `SKILL.md` merely because another research request arrives.
-- Do **not** reread a reference already loaded in the same session unless its contents changed, relevant guidance is no longer available after context loss/compaction, or a material conflict requires verification.
-- Do not traverse references as a checklist. Read only the procedure needed for the current deliverable.
-- Do not recursively invoke this skill or invoke `/caveman` as a second pass. Compression is part of this core contract.
-- Small factual/conceptual questions should be answered directly without phase routing.
+## 2. Parallel IDEA and evolving innovation contract
 
-This session-resident behavior is distinct from cross-session project memory. Use `references/context-management.md` only when continuity recovery actually matters. Use `references/handoff-workspace.md` only at a real handoff checkpoint: **(a)** the user explicitly requests handoff/export, **(b)** a major revision or meaningful research phase closes and the workspace has a new authoritative state, or **(c)** the runtime reliably indicates context pressure/compaction risk that threatens continuity. Do not package after routine edits or merely because a conversation is long.
+- **No single IDEA is automatically the project's sole main line.** Maintain a lightweight portfolio of compatible, competing, auxiliary, diagnostic, or conditional-deployment IDEA branches as needed. Run independent low-cost tests in parallel when resource and evidence boundaries permit; sequence only actual dependencies.
+- Accept three equally legitimate discovery directions from existing experiments: **A. conditional effect / result re-mining**, **B. anomaly fingerprint -> competing mechanism explanations**, and **C. explicit, operationally identifiable deployment domains**. They can generate new branches even if the original IDEA fails or succeeds.
+- Each material IDEA or claim revision gets a stable `idea_id`, a `claim_version`, its parent/evidence origin, distinctive technical action, competing explanations or alternatives, fair strong baseline, falsifying criterion, and current evidence class. A research hypothesis is provisional, not a conclusion.
+- **Revise, do not erase:** retain failed or superseded ideas and negative evidence. A new mechanism, primary metric, target task/domain, or condition chosen after examining results becomes a new claim version with exploratory provenance, not an invisible rewrite of the old frozen hypothesis.
+- Share reusable datasets, components, controls, and evidence across branches with source identifiers; do not duplicate runs or equate shared observations with independent replications. Choose a primary paper story only when evidence and venue positioning justify it; branches may later merge, narrow, pause, or close.
+- Prefer the **cheapest decisive discriminating test** over endless separate tuning campaigns. A finding becomes a method innovation only if it entails a concrete technical difference and survives fair simple/strong baselines and relevant controls.
 
-## 2. Completion first; blocking is exceptional
+Load `references/idea-portfolio-and-reverse-innovation.md` when a user requests multiple IDEA lines, new innovations mined from old results, anomaly-to-mechanism inference, branch arbitration/merging, claim revision, or conditional deployment claims. Use `references/idea-to-plan.md` for a new idea's implementation/experiment contract. Do not load both unless the task actually needs both.
 
-Finish all compatible user-requested subtasks in the current turn when the information and tools are available. Workflow bookkeeping, phase labels, handoff maintenance, optional audits, venue checks, extra experiments, and stale noncritical metadata are never reasons to delay an otherwise correct deliverable.
+## 3. Evidence and final-test protection across *all* branches
 
-Workflow may block or defer an action only when:
+- Classify observations as **development/tuning**, **diagnostic/mechanism**, or **locked independent final confirmation**, with provenance and genuinely independent unit (subject/source/session/site/etc.). Keep operational failures separate from valid scientific negatives.
+- The same held-out evaluation can be contaminated **project-wide**: looking at it to select a branch, metric, subgroup, applicability boundary, architecture, or failure rescue makes later claims built from that choice exploratory on that holdout. Creating a new branch name or code commit does **not** reset its independence.
+- Use training/validation for exploration, branch selection, tuning, and exploratory anomaly analysis. Before a reserved final confirmation, freeze the selected claim version, method/config, data/split/seed semantics, checkpoint rule, primary and failure metrics, eligible domain and baseline/reporting plan. No retuning or post-hoc domain picking on that final set.
+- If final results inspire a new IDEA, preserve the old result as discovery evidence; require a genuinely independent confirmation source for the revised claim or explicitly label the finding exploratory. Cross-branch multiple comparisons, non-independent windows/records, and repeated peeking must not be reported as independent proof.
+- A claim about conditional overall benefit specifies a **pre-recognizable, deployable domain** (never test labels, per-sample test losses, or an oracle selector), coverage, paired average effect and uncertainty, important worst-subgroup failures, resource cost, and untested out-of-domain limits. Domain-average improvement does **not** imply every individual or condition improves.
+- For a new or materially changed claim, perform a proportional novelty scan and **practical baseline-viability check** before locking an expensive main campaign. Cheap feasibility probes may precede this gate. An established formula or unusual error pattern alone is not a novelty or causality claim.
+- Prefer fresh locked independent evidence > strict complete multi-seed evidence > controlled mechanism evidence > validation diagnosis > single-run impressions. Preserve contradictory cases and stronger simple baselines.
 
-- it would contaminate reserved final-test evidence or violate a frozen evaluation boundary;
-- it would fabricate measurements, citations, files, execution results, or other evidence;
-- safety, authorization, destructive, or irreversible-action constraints require confirmation;
-- a missing fact makes the requested result materially incorrect and cannot be inferred, inspected, or safely marked as an assumption.
+## 4. Execution, branch scheduling and paper consistency
 
-Otherwise proceed with the strongest correct deliverable, mark assumptions or evidence limits briefly, and perform available checks in the same turn. Never spend a turn only on routing, audit, state recovery, version logging, or approval for work already authorized.
+- Prepare/edit/analyze with available tools; do not claim to have executed external server/GPU/hardware runs without access. Supply compact runnable commands and collection instructions for external tasks, avoiding duplicate launches for still-pending identical runs.
+- Track experiment identity at least by `idea_id`, `claim_version`, purpose, code/config/data/split/seed, result location, status, and evaluation class when this affects interpretation. Changing the method or metric creates a new condition, not a silent replacement.
+- Prioritize parallel work by decision value, cost and dependency: cheaply kill weak ideas, protect strong controls, and allocate independent confirmations deliberately. Do not require an oversized experiment matrix just because multiple branches exist.
+- Manuscript contributions must be tied to surviving claim versions, their actual tests, target domains, limitations, and strongest comparisons. Never combine the best post-hoc slice of each branch as one pre-confirmed universal method.
+- Handoff/checkpoints only on explicit request, meaningful major revision/phase closure, or reliably confirmed continuity pressure. Where several branches materially matter, preserve their statuses and evidence boundaries in the minimal handoff; do not archive all raw runs by default.
 
-**Context-pressure exception:** if the runtime exposes a reliable high-context/compaction signal, finish the current atomic operation when safe, create a recoverable handoff checkpoint, write unfinished work into `HANDOFF.md`, and warn before starting another long subtask. Block/defer further multi-step work only when continuing would materially risk losing authoritative state. If exact context pressure is not observable, do not invent a token percentage or claim that the context is nearly full; rely on major-revision/phase checkpoints instead.
+## 5. User-facing delivery
 
-## 3. Scientific evidence core
-
-Keep these rules active throughout the session without rereading a reference:
-
-- For every new or materially changed research claim, run a proportional **pre-experiment novelty scan and baseline viability check before freezing the main experiment contract or launching an expensive experiment matrix**. Cheap feasibility probes may proceed earlier, but do not let a late literature/baseline audit redefine the contribution after evidence has already been frozen.
-- Treat baseline viability as empirical, not bibliographic: identify the strongest applicable public/official baselines, verify protocol compatibility, and make at least one representative baseline path runnable or explicitly document why it is not directly reproducible/comparable before the main campaign.
-- Use train/validation evidence for model selection, tuning, early stopping, and design-stage diagnosis.
-- Before first reserved final-test access, freeze the candidate method/configuration, seed semantics, checkpoint-selection rule, metrics, baseline scope, and reporting rule that affect the claim.
-- Never retune from final-test results. If final evidence disagrees with the hypothesis, revise the claim, not the frozen method on the same holdout.
-- Keep development, mechanism/ablation, and final evidence visibly distinct.
-- Treat operational failure separately from a valid negative scientific result.
-- Do not hide stronger simple baselines or negative results; use them to narrow the supported claim.
-- When evidence conflicts, prefer fresh locked final evidence, then strict complete multi-seed evidence, then frozen mechanism evidence, then validation diagnosis, then single runs, then intuition.
-
-These are scientific safeguards, not universal stage gates. Provisional code, analysis, figures, and manuscript text may proceed when their evidence status is explicit.
-
-## 4. Execution and reproducibility core
-
-Default division of labor: ChatGPT prepares/edits/analyzes with available tools; the user runs experiments in external hardware/server environments unless direct authorized access exists.
-
-- Never claim external execution that did not occur.
-- When external execution is needed, finish all locally possible code/configuration/command/report preparation first, then give one runnable task or compact batch.
-- When results return, analyze them and advance in the same turn when possible; do not ask the user to repeat successful checks or resend available evidence.
-- Preserve meaningful version/configuration/seed/data/provenance information when modifying research code or interpreting experiments, but do not make logging a prerequisite for the requested artifact.
-- Prefer compact designed batches and aggregation over repeated one-line patch/run cycles.
-
-Use `references/code-experiment-loop.md` only when detailed experiment engineering, verification, retry, aggregation, or result-diagnosis procedure is actually needed.
-
-## 5. Default visible response: compact three-part form
-
-For substantive work, default to exactly three compact parts:
-
-1. **结论 / 本次完成** — answer the question or state what changed first.
-2. **关键依据 / 交付** — only decisive evidence, changed files, artifact links, exact commands, or claim limits.
-3. **下一步** — one preferred next action, command, or decision boundary. Omit unnecessary future work.
-
-Compression rules:
-
-- Remove filler, repeated recap, tool narration, skill-routing narration, decorative prose, and non-decisive logs.
-- Preserve technical terms, code symbols, equations, paths, CLI commands, numbers, units, negation, qualifiers, and exact error strings.
-- Do not create ambiguous abbreviations or broken grammar just to shorten text.
-- Do not append separate recap/self-check/risk/methodology sections when the content fits the three parts.
-- When a handoff checkpoint is created, place the `handoff_bundle.zip` download link (and `HANDOFF.md` link when separately surfaced) in **part 2: 关键依据 / 交付**. Do not add a fourth handoff section or repeat the handoff contents in prose.
-- Stop once the requested deliverable is correct and sufficient. Do not trigger another review pass solely because this skill is active.
-
-Exceptions: command-only requests get the command plus essential warning; finished prose/code requested inline is delivered in full; safety-sensitive actions and explicitly requested detailed reports may exceed three parts.
+For substantive tasks, default to three compact sections: **结论 / 本次完成**, **关键依据 / 交付**, **下一步**. A portfolio comparison can use one compact table when requested or decision-relevant. Deliver finished code/docs/plans in full even if longer. Avoid verbose workflow narration or separate audit summaries. Put actual handoff links in section two.
 
 ## 6. Lazy reference router
 
-References are **procedures**, not always-on policy. Load them only on a trigger below. By default, read at most one primary reference for a turn; add another only when the task genuinely spans both procedures.
+- `references/idea-portfolio-and-reverse-innovation.md` — parallel IDEA management; old-results re-mining; anomaly mechanisms; conditional domains; claim pivots/merges/arbitration.
+- `references/idea-to-plan.md` — a new/materially revised branch's claim, novelty and baseline viability, design and freezing of a main experiment contract.
+- `references/code-experiment-loop.md` — experiment code, controls, launch/return, aggregation, abnormal results, retry and shared run identity.
+- `references/paper-workflow.md` — manuscript, venue, claim/evidence and submission work.
+- `references/context-management.md` — new-session state recovery, material conflict, or reliably observed continuity pressure.
+- `references/handoff-workspace.md` — explicit handoff/export, authoritative major phase/revision checkpoint, or verified continuity pressure.
 
-- `references/idea-to-plan.md` — load for a vague/new research idea, material redesign, hypothesis framing, pre-experiment novelty/baseline validation, experiment-contract design, or baseline/control planning.
-- `references/code-experiment-loop.md` — load for implementation/debugging tied to experiments, experiment scheduling, verification, failure/retry diagnosis, aggregation, or interpretation of returned results.
-- `references/paper-workflow.md` — load for manuscript structure/revision, claim audit, venue shortlisting/selection before outline design, literature-position delta checks, or submission preparation.
-- `references/context-management.md` — load only for new-session/workspace recovery, missing/stale project state that materially affects work, or reliable context-pressure/compaction signals.
-- `references/handoff-workspace.md` — load for an explicit handoff/export request, after a **major revision or meaningful phase closes**, or when reliable context pressure makes a continuity checkpoint necessary. It defines the minimal-recoverable-workspace bundle, `HANDOFF.md`, and optional evidence-chain companion.
+Read at most one primary reference by default. Load another only when its procedure is actually needed; previously loaded applicable guidance should be reused. Never start a linear phase scan just because a request mentions a research topic.
 
-Do not load `context-management.md` just because a project is long. Do not create a handoff after small edits, ordinary analysis turns, or every experiment return. Treat a **major revision** as a new authoritative checkpoint that materially changes method/code, experiment contract, manuscript/workspace version, or accepted evidence state. Do not claim context pressure unless the runtime provides a reliable signal or prior context has demonstrably been compacted/lost. Do not load `paper-workflow.md` merely because eventual publication is a goal. Do not load `idea-to-plan.md` when the current method and contract are already settled. Do not load `code-experiment-loop.md` for ordinary code edits unrelated to experimental validity.
+## 7. Stop condition
 
-If a reference was already loaded and still applies, reuse it. If the user changes scope, load only the newly relevant reference rather than restarting the whole workflow.
-
-## 7. End condition
-
-Once the requested artifact, analysis, code change, experiment instruction, or manuscript text is complete enough for the current decision, stop. Suggest or dispatch more work only when it resolves a stated scientific or operational question; never extend the workflow for its own sake.
+Stop once the requested artifact or scientific decision is supported sufficiently. A branch can **advance**, **narrow**, **merge**, **pause**, **be contradicted**, or **close**. Do not manufacture more IDEA work to keep the workflow busy.

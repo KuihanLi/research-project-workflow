@@ -2,118 +2,79 @@
 
 > English | [简体中文](README.zh-CN.md)
 
-A lightweight, completion-first workflow Skill for long-running research projects. It helps ChatGPT move from research idea and method design through implementation, controlled experiments, evidence interpretation, manuscript writing, handoff, and submission without turning the workflow itself into a bottleneck.
+A lightweight, completion-first ChatGPT Skill for **parallel research IDEA exploration, evolving claims, controlled experiments, evidence interpretation, manuscript work, and recoverable project handoff**. It extends the original single-IDEA workflow into a branch-aware research portfolio without turning workflow maintenance into a blocker.
 
-## Why this exists
+## What's new (working update)
 
-Long research conversations often become slower over time because the assistant repeatedly reloads workflow instructions, re-routes the task, performs redundant audits, or treats bookkeeping as a gate before useful work. Research Project Workflow separates stable session rules from task-specific procedures:
+- **Parallel IDEA portfolio:** competing, complementary, diagnostic, baseline and deployment-focused branches can coexist; advancement is determined by evidence and experiment dependencies, not by which IDEA arrived first.
+- **Reverse innovation discovery:** mine existing experiment results through (A) effect heterogeneity, (B) anomaly fingerprint and competing mechanism tests, and (C) explicitly recognizable conditional deployment domains.
+- **Versioned scientific claims:** `idea_id`, `parent_id`, `claim_version`, shared evidence IDs, stop/falsification rules, and honest branch decisions: advance, narrow, pivot, merge, pause or reject.
+- **Project-wide evidence quarantine:** final-test inspection used for branch, metric, method or domain selection cannot serve as independent confirmation of the resulting new claim. Fresh data/sources are needed for that purpose, not new labels or code versions.
+- **Conditional utility:** report deployable boundary, coverage, paired mean benefit/uncertainty, worst key-group risks, costs, and out-of-domain limits rather than post-hoc cherry-picked success.
+- **Resource-aware experiments:** share strong controls and source identities; favor cheap discriminating tests, preserve independent confirmation budgets and negative evidence.
+- **Continuity:** save only the live IDEA map and evidence boundaries at meaningful handoffs, not every historical run.
 
-- **Session-resident core:** load once, then reuse during the session.
-- **Lazy procedure loading:** read only the reference needed for the current task.
-- **Completion first:** finish answerable work instead of blocking on noncritical process steps.
-- **Evidence discipline:** protect validation/test boundaries and avoid tuning on final-test evidence.
-- **Early novelty/baseline gate:** verify the claim landscape and strongest practical baselines before freezing the main experiment contract.
-- **Venue-first manuscript framing:** shortlist target venues from the actual evidence and recent publication landscape before locking the manuscript frame.
-- **Recoverable checkpoints:** package a minimal resumable workspace after major revisions/phase closures, explicit handoff requests, or reliably signaled context pressure.
-- **Compact output:** default to a three-part response focused on conclusion, evidence/deliverable, and next action.
+The previous **completion-first**, **pre-experiment novelty and baseline viability**, **validation vs. locked final testing**, **paper/venue selection**, and **minimal recoverable handoff** requirements remain active.
 
-## What it supports
-
-- Research question and hypothesis framing
-- Method and algorithm revision
-- Pre-experiment novelty search and baseline viability validation
-- Baseline and control design
-- Experiment implementation and debugging
-- Multi-seed and ablation planning
-- Validation/test evidence separation
-- Failure diagnosis and result aggregation
-- Manuscript drafting and revision
-- Novelty and claim-evidence audits
-- Evidence-based venue shortlisting before manuscript framing
-- Venue and submission preparation
-- Long-project handoff and continuity
-- Minimal recoverable workspace packaging with `HANDOFF.md` and SHA-256 manifest verification
-
-## Repository structure
+## Core research paths
 
 ```text
-research-project-workflow/
-├── SKILL.md
-├── agents/
-│   └── openai.yaml
-├── assets/
-│   └── icon.svg
-├── scripts/
-│   └── package_handoff.py
-└── references/
-    ├── idea-to-plan.md
-    ├── code-experiment-loop.md
-    ├── paper-workflow.md
-    ├── context-management.md
-    └── handoff-workspace.md
+shared question/data/protocol/strong baselines
+    +-- forward: IDEA -> mechanism -> matched experiment
+    +-- reverse A: condition-specific gain / loss
+    +-- reverse B: anomaly -> rival mechanisms -> discriminating intervention
+    +-- reverse C: recognizable deployment boundary -> utility / risk
+    \-- optional evidence-based merges and pivots
+                    |
+        versioned frozen claim -> independent confirmation -> paper
 ```
 
-## Loading model
+A, B and C are possible concurrent discovery modes, not mandatory stages or guaranteed innovations. A narrower valid contribution still needs clear technical distinction and honest verification.
 
-`SKILL.md` contains the always-on rules for the active session. The files under `references/` are procedures and should be loaded only when required.
+## Reference routing
 
-| Task | Reference |
+| Task | Load when needed |
 | --- | --- |
-| New/vague research idea, major redesign, controls | `references/idea-to-plan.md` |
-| Experiment code, runs, failures, aggregation, returned results | `references/code-experiment-loop.md` |
-| Manuscript, claims, novelty, venue, submission | `references/paper-workflow.md` |
-| New-session recovery or confirmed context-pressure continuity | `references/context-management.md` |
-| Explicit handoff, major-revision/phase checkpoint, resumable workspace export | `references/handoff-workspace.md` |
+| Parallel IDEA portfolio, reverse discovery, anomaly mechanism, pivots and domain claims | `references/idea-portfolio-and-reverse-innovation.md` |
+| New/revised claim, baseline check, experiment contract | `references/idea-to-plan.md` |
+| Code, batches, runs, diagnostics, results | `references/code-experiment-loop.md` |
+| Manuscript/venue/claim-evidence audit | `references/paper-workflow.md` |
+| New-session recovery, material state conflicts | `references/context-management.md` |
+| Explicit handoff, major checkpoint or confirmed context pressure | `references/handoff-workspace.md` |
 
-The workflow explicitly avoids rereading references that are already available in the same session unless context was lost or the file changed.
+`SKILL.md` is the session-resident core, read once. Load at most one primary reference by default and reuse instructions already present in the session. Project-specific state belongs in the project workspace; an optional compact IDEA register can be kept there only when several active branches make it useful.
 
-## Core behavior
-
-1. Complete all compatible user-requested work that can be done now.
-2. Before the main experiment contract is frozen, run a proportional novelty scan and validate the strongest practical strict-protocol baseline path.
-3. Block only when proceeding would contaminate final evidence, fabricate evidence, violate safety/authorization constraints, or require a missing fact that cannot be safely inferred.
-4. Use validation evidence for tuning and reserve final-test evidence for frozen evaluation.
-5. Keep development evidence, mechanism evidence, and final evidence distinct.
-6. Before locking manuscript framing, shortlist target venues from official scope, recent close work, and the evidence actually available.
-7. After a major revision/meaningful phase close, create a minimal recoverable checkpoint when the workspace has a new authoritative state; also checkpoint on explicit request or reliable context-pressure signals.
-8. Put handoff download links in the normal second response section rather than adding a fourth section.
-9. Load at most one primary procedure reference by default.
-10. Stop when the current deliverable is sufficient for the decision.
-
-## Example prompts
+## Prompt examples
 
 ```text
-Use Research Project Workflow to turn this idea into a minimal experiment plan with baselines and success criteria.
+Use Research Project Workflow to compare IDEA-A and IDEA-B and plan the cheapest tests that distinguish them, while preserving the independent final holdout.
 ```
 
 ```text
-Use Research Project Workflow to diagnose these five-seed results and decide whether the method should be frozen or revised.
+Mine last week's positive and negative experiments for conditional effects, competing anomaly mechanisms and a deployable conditional domain. Propose evidence-labeled child IDEAs, not post-hoc final claims.
 ```
 
 ```text
-Use Research Project Workflow to audit the claims in this manuscript against the evidence we actually have.
+Evolve the current innovation claim based on the anomalous results, retain negative evidence, check the closest stronger baselines and specify how we can independently confirm the revised claim.
 ```
 
 ```text
-Use Research Project Workflow to recover the current project state and continue from the latest valid experiment.
+Reconcile the manuscript contributions with the surviving IDEA branches, domain coverage and locked confirmation evidence.
 ```
 
-## Installation / migration
+## Repository layout
 
-For source-based use, clone or download this repository and keep the directory structure intact. If your ChatGPT environment supports custom Skill import, package the repository contents as a Skill archive using the supported Skill packaging workflow, then import that archive.
+```text
+SKILL.md
+references/{idea-portfolio-and-reverse-innovation,idea-to-plan,code-experiment-loop,paper-workflow,context-management,handoff-workspace}.md
+scripts/package_handoff.py
+agents/openai.yaml
+assets/icon.svg
+```
 
-Do not flatten `references/`, `agents/`, or `assets/`; `SKILL.md` references these paths directly.
+## Installation / maintenance
 
-## Design goals
-
-- Small always-on instruction surface
-- No per-turn phase scan
-- No reply-count bookkeeping
-- No recursive Skill invocation
-- No workflow-only blocking turns except evidence/safety boundaries and confirmed continuity-risk checkpoints
-- Lazy reference loading
-- Strong experimental evidence boundaries
-- Compact user-facing output
+Keep the directory structure intact when importing the Skill. If applying this source bundle to an existing Git clone, use a feature branch, review the changed files and commit after validation. The source bundle itself does not include the Git commit history. The original published citation version stays unchanged until a new release is actually made.
 
 ## Development and maintenance contract
 
@@ -132,10 +93,4 @@ Keep this Skill lightweight as it evolves. Every maintenance change should follo
 
 A change is complete when its user-visible problem is addressed, the relevant regression checks pass, the package/repository state is accurately verified, and the handoff contains enough information to resume any unfinished work. Do not add extra review loops once these conditions are met.
 
-## License
-
-MIT. See [LICENSE](LICENSE).
-
-## Citation
-
-If this workflow materially supports an academic project, you can cite the repository using the metadata in [`CITATION.cff`](CITATION.cff).
+MIT License. See [LICENSE](LICENSE). Citation metadata: [CITATION.cff](CITATION.cff).

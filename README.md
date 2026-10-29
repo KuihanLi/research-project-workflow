@@ -115,6 +115,23 @@ Do not flatten `references/`, `agents/`, or `assets/`; `SKILL.md` references the
 - Strong experimental evidence boundaries
 - Compact user-facing output
 
+## Development and maintenance contract
+
+Keep this Skill lightweight as it evolves. Every maintenance change should follow these rules:
+
+1. **Audit before editing.** Start from a concrete user-observed failure or validated need. Inspect the current core, relevant reference, and existing scripts before changing anything; identify the root cause and check whether an existing rule already covers it.
+2. **Classify the change.** Put stable, cross-project rules that must remain active in `SKILL.md`; put detailed task procedures in a lazily loaded `references/` file; keep project paths, results, thresholds, and temporary decisions in the project workspace or handoff. Do not promote project-specific facts into the reusable Skill.
+3. **Make the smallest sufficient patch.** Prefer updating the nearest existing file over adding another Skill, reference, checklist, or script. Add a new component only when it represents a distinct reusable capability. Preserve verified behavior and avoid speculative features, duplicate gates, and parallel mechanisms.
+4. **Protect execution efficiency.** Do not add per-turn phase scans, repeated reference reads, recursive Skill calls, turn counters, mandatory bookkeeping, or status-only steps. Reuse already available context. Complete the task first; process checks must not become a new source of blocking.
+5. **Validate the affected behavior.** Run the Skill validator and relevant self-tests; add targeted regression tests for the changed path, including a representative real case when practical. Test the exact packaged artifact and documented import/extraction path. Check archive contents and hashes when identity matters. Never describe a ZIP as persistently installed, or a remote update as complete, until that state is actually verified.
+6. **Release with traceable evidence.** Keep source, README, and changelog consistent; preserve upstream attribution and license boundaries. For repository changes, use a focused branch/PR, inspect the final diff, and merge only after relevant checks pass. Avoid unrelated refactors in the same release.
+7. **Checkpoint major work.** After a major revision or meaningful phase closure, create a minimal recoverable workspace ZIP with `HANDOFF.md`. Trigger early for context pressure only when there is a reliable runtime signal or demonstrable compaction/loss. Include the download link in the second part of the normal three-part response; create a separate experiment evidence-chain file only when explicitly requested.
+8. **Stop low-value branches.** Keep experimental features outside the core until real tasks demonstrate meaningful benefit. The journal-style and discipline-level figure-preference guide experiment is stopped; do not resume it without an explicit request.
+
+### Definition of done
+
+A change is complete when its user-visible problem is addressed, the relevant regression checks pass, the package/repository state is accurately verified, and the handoff contains enough information to resume any unfinished work. Do not add extra review loops once these conditions are met.
+
 ## License
 
 MIT. See [LICENSE](LICENSE).

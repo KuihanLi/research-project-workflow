@@ -4,8 +4,9 @@
 
 A lightweight, completion-first ChatGPT Skill for **parallel research IDEA exploration, evolving claims, controlled experiments, evidence interpretation, manuscript work, and recoverable project handoff**. It extends the original single-IDEA workflow into a branch-aware research portfolio without turning workflow maintenance into a blocker.
 
-## What's new (working update)
+## Current capabilities (v1.4.0)
 
+- **Literature-to-IDEA discovery:** decompose papers into task/topic, scenario, method and additional constraints; extract reusable innovation operators, then propose falsifiable technical changes instead of treating arbitrary combinations as proven novelty.
 - **Parallel IDEA portfolio:** competing, complementary, diagnostic, baseline and deployment-focused branches can coexist; advancement is determined by evidence and experiment dependencies, not by which IDEA arrived first.
 - **Reverse innovation discovery:** mine existing experiment results through (A) effect heterogeneity, (B) anomaly fingerprint and competing mechanism tests, and (C) explicitly recognizable conditional deployment domains.
 - **Versioned scientific claims:** `idea_id`, `parent_id`, `claim_version`, shared evidence IDs, stop/falsification rules, and honest branch decisions: advance, narrow, pivot, merge, pause or reject.
@@ -20,7 +21,7 @@ The previous **completion-first**, **pre-experiment novelty and baseline viabili
 
 ```text
 shared question/data/protocol/strong baselines
-    +-- forward: IDEA -> mechanism -> matched experiment
+    +-- forward: papers -> decomposition -> change operator -> candidate IDEA -> mechanism -> matched experiment
     +-- reverse A: condition-specific gain / loss
     +-- reverse B: anomaly -> rival mechanisms -> discriminating intervention
     +-- reverse C: recognizable deployment boundary -> utility / risk
@@ -36,7 +37,7 @@ A, B and C are possible concurrent discovery modes, not mandatory stages or guar
 | Task | Load when needed |
 | --- | --- |
 | Parallel IDEA portfolio, reverse discovery, anomaly mechanism, pivots and domain claims | `references/idea-portfolio-and-reverse-innovation.md` |
-| New/revised claim, baseline check, experiment contract | `references/idea-to-plan.md` |
+| Decompose papers / construct IDEAs, new/revised claim, baseline check, experiment contract | `references/idea-to-plan.md` |
 | Code, batches, runs, diagnostics, results | `references/code-experiment-loop.md` |
 | Manuscript/venue/claim-evidence audit | `references/paper-workflow.md` |
 | New-session recovery, material state conflicts | `references/context-management.md` |
@@ -45,6 +46,10 @@ A, B and C are possible concurrent discovery modes, not mandatory stages or guar
 `SKILL.md` is the session-resident core, read once. Load at most one primary reference by default and reuse instructions already present in the session. Project-specific state belongs in the project workspace; an optional compact IDEA register can be kept there only when several active branches make it useful.
 
 ## Prompt examples
+
+```text
+Decompose these papers into topic/task, scenario, method and additional constraints. Extract transferable innovation operators; propose 3 technically distinct IDEAs with closest prior work, feasibility limits and minimal falsifying tests. Do not claim novelty from A+B+C alone.
+```
 
 ```text
 Use Research Project Workflow to compare IDEA-A and IDEA-B and plan the cheapest tests that distinguish them, while preserving the independent final holdout.
@@ -74,7 +79,7 @@ assets/icon.svg
 
 ## Installation / maintenance
 
-Keep the directory structure intact when importing the Skill. If applying this source bundle to an existing Git clone, use a feature branch, review the changed files and commit after validation. The source bundle itself does not include the Git commit history. The original published citation version stays unchanged until a new release is actually made.
+Keep the directory structure intact when importing the Skill. If applying this source bundle to an existing Git clone, use a feature branch, review the changed files and commit after validation. The source bundle itself does not include the Git commit history. Use the versioned `CITATION.cff` for the latest released repository source. A downloaded ZIP is not evidence of plugin installation until the installed release is verified.
 
 ## Development and maintenance contract
 

@@ -1,6 +1,6 @@
 # Parallel IDEA Portfolio, Reverse Innovation, and Claim Evolution
 
-Load only for multi-IDEA research, reinterpreting old results to develop new innovations, anomaly mechanism inference, conditional-domain claims, or branch arbitration/merging. This procedure integrates the user-provided reverse-innovation methodology with the existing evidence-protected workflow. It does **not** require every project to maintain all possible artifacts.
+Load only for multi-IDEA research, **unifying literature-generated and experiment-generated ideas**, reinterpreting old results, anomaly mechanism inference, conditional-domain claims, or branch arbitration/merging. This procedure integrates source-derived literature decomposition and the prior reverse-innovation methodology with the existing evidence-protected workflow. It does **not** require every project to maintain all possible artifacts. Detailed literature-to-IDEA generation belongs in `idea-to-plan.md`.
 
 ## 1. Use a portfolio, not a compulsory IDEA chain
 
@@ -8,7 +8,8 @@ Think in **branches plus shared evidence**:
 
 ```text
 Shared task / raw data / protocol / strong baselines / evidence ledger
-    |-- F: forward IDEA -> minimal mechanism -> controlled result
+    |-- F: literature/system decomposition -> change operator -> candidate IDEA
+    |       -> minimal mechanism -> controlled result
     |-- A: result re-mining -> conditional effects -> candidate method
     |-- B: anomaly fingerprint -> competing causes -> discriminating tests
     `-- C: deployable applicability domain -> coverage / risk / cost
@@ -23,13 +24,17 @@ For each materially active IDEA, keep only enough state to decide the next test:
 | Field | Meaning |
 | --- | --- |
 | `idea_id`, `parent_id`, `claim_version` | Stable lineage; revisions never silently overwrite a frozen claim |
-| `question`, `technical_action`, `predicted_difference` | Problem, executable mechanism, how it differs from alternatives |
+| `origin_type`, `source_refs`, `origin_observation` | Literature/technology analysis, experimental effect, anomaly, domain boundary or researcher problem; paper IDs or run/evidence IDs and what was actually observed/claimed |
+| `source_decomposition`, `change_operator` (if paper-derived) | Topic/task, scenario, method, additional constraints; transferable pattern rather than an unverified combination claim |
+| `question`, `technical_action`, `technical_delta`, `predicted_difference` | Problem, executable mechanism, difference from closest prior method, distinct falsifiable prediction |
 | `status`, `priority`, `dependencies`, `next_decision` | Candidate / active / paused / merged / rejected / confirmed; dependencies |
 | `evidence_ids`, `evidence_class`, `split_exposure` | What is known and whether test evidence was used for discovery |
 | `baseline`, `fairness_budget`, `falsifier` | Strong/simple alternatives, equal inputs/splits/resources, stop rule |
 | `deployment_domain`, `risks`, `novelty_delta` | Boundaries, worst groups, real prior-art gap |
 
 A small project can use a short section in `PROJECT_STATE.md`; a many-branch project can use a small project-local `IDEA_REGISTER.md` with the fields above. Do not require a new registry for a single routine answer.
+
+**Unified provenance rule:** whether an IDEA begins with a paper, existing technical system, surprising run or negative result, distinguish **source fact/claim** from **our inference** and **evidence-backed confirmation**. For a paper-derived idea, retain the cited decomposition and operator; for a run-derived idea, retain observed run IDs, split exposure and alternative explanations. A single IDEA may have multiple sources, but merging references does not make independent evidence. Use the same novelty/delta search, baseline, falsifier and claim-version rules for both origins. Do not turn slide commentary or an author's opinion about a paper into verified scientific fact.
 
 ## 2. Mine old results without rewriting history (track A)
 
@@ -117,6 +122,6 @@ A changed **technical action, principal metric, application domain or primary cl
 
 For a substantive revision, return a compact portfolio summary containing each active branch's **supported fact -> competing explanation -> smallest deciding test -> continuation decision**. A paper's chosen contribution must be traceable to its originating IDEA(s), strong baseline, independent evidence class and constraints; related branches and negative results remain available for limitations or future work.
 
-If several branches must be maintained, keep a small project-local register based on Section 1. A single exploratory discovery card can use the source methodology's five blocks: verified facts, competing explanations, deployable constraints, discriminating experiment, honest claim/status. Avoid forcing full paperwork on small tasks.
+If several branches must be maintained, keep a small project-local register based on Section 1. A single discovery card can use five compact blocks: **source-grounded facts (papers or runs), proposed mechanism and competing explanations, feasible technical change and deployment conditions, decisive test, honest claim/status**. For literature-first discovery include the four-part decomposition and transferable operator; for result-first discovery include the observed effect/fingerprint and evaluation exposure. Avoid forcing full paperwork on small tasks.
 
 **Stop** when the cheapest meaningful test cannot change the decision, when independent confirmation is unavailable and a qualified exploratory conclusion suffices, or when current user-requested work is complete.

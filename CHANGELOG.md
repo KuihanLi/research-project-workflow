@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.4.0 - 2026-11-05
+
+### Added
+- Literature-to-IDEA discovery in the existing `idea-to-plan.md`: paper decomposition (topic/task, scenario, method, additional constraints), transferable change patterns, technical delta, shortlist and falsifiable tests.
+- Unified literature-first and experiment-first IDEA provenance in the existing portfolio reference without forcing a project registry or extra runtime reference.
+
+### Changed
+- Session core and both READMEs route literature-driven IDEA creation to the existing lazy-loaded design procedure.
+- Distinguish a potentially unstudied combination and journal acceptance from independently validated novelty/technical value. Preserve the previous evidence, reproducibility, and maintenance requirements.
+
 ## 1.3.0 - 2026-10-29
 
 ### Documentation / maintenance
